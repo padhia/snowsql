@@ -12,11 +12,11 @@
 stdenv.mkDerivation rec {
   pname = "snowsql";
   majorVersion = "1.2";
-  version = "${majorVersion}.30";
+  version = "${majorVersion}.31";
 
   src = fetchurl {
     url = "https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/${majorVersion}/linux_x86_64/snowflake-snowsql-${version}-1.x86_64.rpm";
-    sha256 = "sha256-lzxE/BFEJMjpTxPfm29DOMHEiLh3LC+WRLxgoE/NPLY=";
+    sha256 = "sha256-Rzt9yPJVep8vaD0+MicwOz7JlI6HO/Yi/ln5Lb8juBE=";
   };
 
   nativeBuildInputs = [ rpmextract makeWrapper ];
