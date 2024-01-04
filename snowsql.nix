@@ -4,7 +4,6 @@
 , rpmextract
 , patchelf
 , makeWrapper
-, binutils  # https://github.com/NixOS/nixpkgs/issues/199622
 , openssl
 , libxcrypt-legacy
 }:
@@ -22,7 +21,6 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ rpmextract makeWrapper ];
 
   libPath = lib.makeLibraryPath [ openssl libxcrypt-legacy ];
-  binPath = lib.makeBinPath [ binutils ];
 
   buildCommand = ''
     mkdir -p $out/bin/
@@ -37,7 +35,6 @@ stdenv.mkDerivation rec {
         lib64/snowflake/snowsql/snowsql
 
     makeWrapper $out/lib64/snowflake/snowsql/snowsql $out/bin/snowsql \
-      --prefix PATH : "${binPath}" \
       --set LD_LIBRARY_PATH "${libPath}":"${placeholder "out"}"/lib64/snowflake/snowsql \
   '';
 
